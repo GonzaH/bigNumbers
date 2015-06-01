@@ -9,27 +9,28 @@ typedef struct bigNumber {
 
 short numeroValido (char text[]) {
 	short valido = 1;
-	unsigned offSet = 0;
-	if ('-' == text[offSet]) ++offSet;
-	while (1 == valido && '\0' != text[offSet]) {
-		if (48 > text[offSet] || 57 < text[offSet]) valido = 0;
-		++offSet;
+	unsigned posicion = 0;
+	if ('-' == text[posicion]) ++posicion;
+	while (1 == valido && '\0' != text[posicion]) {
+		if (48 > text[posicion] || 57 < text[posicion]) valido = 0;
+		++posicion;
 	}
 	return valido;
 }
 
 void charToBigNumber (char text[], tBigNumber *bigNumber) {
-	unsigned offSet = 0;
-	bigNumber->signo = 0;
-	if ('-' == text[offSet]) {
+	unsigned posicion = 0;
+	if ('-' == text[posicion]) {
 		bigNumber->signo = 1;
-		++offSet;
+		++posicion;
+	} else {
+		bigNumber->signo = 0;
 	}
-	while ('\0' != text[offSet]) {
-		bigNumber->numero[offSet - bigNumber->signo] = text[offSet] - 48;
-		++offSet;
+	while ('\0' != text[posicion]) {
+		bigNumber->numero[posicion - bigNumber->signo] = text[posicion] - 48;
+		++posicion;
 	}
-	bigNumber->tope = offSet - bigNumber->signo;
+	bigNumber->tope = posicion - bigNumber->signo;
 }
 
 short esMayor (tBigNumber numeroA, tBigNumber numeroB) {
@@ -47,7 +48,7 @@ short esMayor (tBigNumber numeroA, tBigNumber numeroB) {
 }
 
 /*
-	funcion: suma y resta dos bigNumber
+	funcion: suma y resta absoluta de dos bigNumber
 	variable "tipo":
 		1 para realizar suma
 		-1 para realizar resta
