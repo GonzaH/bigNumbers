@@ -56,7 +56,6 @@ short esMayor (tBigNumber numeroA, tBigNumber numeroB) {
 void calculo (tBigNumber numeroA, tBigNumber numeroB, tBigNumber *resultado, short tipo) {
 	short carry = 0, posicionB;
 	unsigned i;
-	resultado->signo = queSigno (numeroA, numeroB, tipo);
 	resultado->tope = numeroA.tope;
 	for (i = numeroA.tope; i > 0; --i) {
 		posicionB = numeroB.tope + (i - numeroA.tope - 1);
