@@ -81,16 +81,16 @@ void calculo (tBigNumber numeroA, tBigNumber numeroB, tBigNumber *resultado, sho
 			resultado->numero[resultado->tope-1] = 10 - resultado->numero[resultado->tope-1];
 			for (i = resultado->tope - 1; i > 0; --i)
 				resultado->numero[i-1] = 9 - resultado->numero[i-1];
-			//quita ceros del principio del vector
-			while (resultado->numero[0] == 0) {
-				i = 0;
-				while (i < resultado->tope - 1) {
-					resultado->numero[i] = resultado->numero[i+1];
-					++i;
-				}
-				--resultado->tope;
-			}
 		}
+	}
+	//quita ceros del principio del vector
+	while (resultado->tope > 1 && resultado->numero[0] == 0) {
+		i = 0;
+		while (i < resultado->tope - 1) {
+			resultado->numero[i] = resultado->numero[i+1];
+			++i;
+		}
+		--resultado->tope;
 	}
 }
 
@@ -105,8 +105,6 @@ void printBigNumber (tBigNumber numero) {
 
 int main (int argc, char *argv[]) {
 	tBigNumber numeroA, numeroB, resultado;
-	argv[1] = "-326";
-	argv[2] = "876";
 	if (1 == numeroValido (argv[1]) && 1 == numeroValido (argv[2])) {
 		charToBigNumber (argv[1], &numeroA);
 		charToBigNumber (argv[2], &numeroB);
