@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define tInt unsigned long
 #define MAX 1024 // MAX < 65536
 
 typedef struct bigNumber {
