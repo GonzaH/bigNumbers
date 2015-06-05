@@ -95,71 +95,71 @@ void calculo (tBigNumber numeroA, tBigNumber numeroB, tBigNumber *resultado, sho
 }
 
 void resta (tBigNumber primernumero, tBigNumber segundonumero, tBigNumber *resultado) {
-	If primernumero.signo!=segundonumero.signo {
-		´*resultado.signo=primernumero.signo;
-		*resultado.numero=calculo(primernumero,segundonumero,1);
-		If primernumero.tope>segundonumero.tope	
-			*resultado.tope=primernumero.tope+1;
+	If (primernumero.signo)!=(segundonumero.signo) {
+		(*resultado).signo=primernumero.signo;
+		(*resultado).numero=calculo(primernumero,segundonumero,1);
+		If (primernumero.tope)>(segundonumero.tope)	
+			(*resultado).tope=primernumero.tope+1;
 		else {
 			If segundonumero.tope>primernumero.tope	
-				*resultado.tope=segundonumero.tope+1;
+				(*resultado).tope=segundonumero.tope+1;
 			else
-				*resultado.tope=primernumero.tope+1;
+				(*resultado).tope=primernumero.tope+1;
 		}
 		}
 	else { 
-		If primernumero>segundonumero {
-			*resultado.signo=primernumero.signo;
-			*resultado.numero=calculo(primernumero,segundonumero,-1);
-			*resultado.tope=primernumero.tope
+		If (primernumero.numero)>(segundonumero.numero) {
+			(*resultado).signo=primernumero.signo;
+			(*resultado).numero=calculo(primernumero,segundonumero,-1);
+			(*resultado).tope=primernumero.tope
 			}
 		else {
-			*resultado.signo=(segundonumero.signo*(-1));
-			*resultado.numero=calculo(segundonumero,primernumero,-1);
-			*resultado.tope=segundonumero.tope
+			(*resultado).signo=(segundonumero.signo*(-1));
+			(*resultado).numero=calculo(segundonumero,primernumero,-1);
+			(*resultado).tope=segundonumero.tope
 			}
 	}
 }
 
 void suma (tBigNumber primernumero, tBigNumber segundonumero, tBigNumber *resultado ) {
-	If primernumero.signo==segundonumero.signo {
-		resultado.signo=primernumero.signo;
-		calcular(primernumero,segundonumero,1);
+	If (primernumero.signo)==(segundonumero.signo) {
+		(*resultado).signo=primernumero.signo;
+		calculo(primernumero,segundonumero,1);
 		If primernumero.tope>segundonumero.tope	
-			*resultado.tope=primernumero.tope+1;
+			(*resultado).tope=primernumero.tope+1;
 		else {
 			If segundonumero.tope>primernumero.tope	
-				*resultado.tope=segundonumero.tope+1;
+				(*resultado).tope=segundonumero.tope+1;
 			else
-				*resultado.tope=primernumero.tope+1;
+				(*resultado).tope=primernumero.tope+1;
 		}
 	}
 	else {
-		If primernumero.tope>segundonumero.tope {
-			*resultado.signo=primernumero.signo;
-			*resultado.numero=calcular(primernumero,segundonumero,-1);
-			*resultado.tope=primernumero.tope;
+		If (primernumero.tope)>(segundonumero.tope) {
+			(*resultado).signo=primernumero.signo;
+			(*resultado).numero=calculo(primernumero,segundonumero,-1);
+			(*resultado).tope=primernumero.tope;
 		}
 		else {
-			if primernumero.tope<segundonumero.tope {
-				*resultado.signo=segundonumero.signo;
-				*resultado.numero=calcular(segundonumero,primernumero,-1);
-				*resultado.tope=segundonumero.tope;
+			if (primernumero.tope)<(segundonumero.tope) {
+				(*resultado).signo=segundonumero.signo;
+				(*resultado).numero=calculo(segundonumero,primernumero,-1);
+				(*resultado).tope=segundonumero.tope;
 				}
 			else {
-				*resultado.tope=primernumero.tope;
-				If primernumero.numero[0]>segundonumero.numero[0] {
-					*resultado.signo=primernumero.signo;
-					*resultado.numero=calcular(primernumero,segundonumero,-1);
+				(*resultado).tope=primernumero.tope;
+				If (primernumero.numero[0])>(segundonumero.numero[0]) {
+					(*resultado).signo=primernumero.signo;
+					(*resultado).numero=calculo(primernumero,segundonumero,-1);
 				}
 				else {
-					If primernumero.numero[0]<segundonumero.numero[0] {
-						*resultado.signo=segundonumero.signo;
-					*	resultado.numero=calcular(segundonumero,primernumero,-1);
+					If (primernumero.numero[0])<(segundonumero.numero[0]) {
+						(*resultado).signo=segundonumero.signo;
+						(*resultado).numero=calculo(segundonumero,primernumero,-1);
 					}
 					else {
-						*resultado.signo={1};
-						*resultado.numero={0};
+						(*resultado).signo={1};
+						(*resultado).numero={0};
 					}
 				}
 		}
@@ -170,26 +170,25 @@ void suma (tBigNumber primernumero, tBigNumber segundonumero, tBigNumber *result
 void multiplicacion (tBigNumber primernumero, tBigNumber segundonumero, tBigNumber *resultado) {
 int i,j;
 
-If primernumero.signo*segundonumero.signo>0
-	*resultado.signo=1;
+If (primernumero.signo)*(segundonumero.signo)>0
+	(*resultado).signo=1;
 else
-	*resultado.signo=-1;
+	(*resultado).signo=-1;
 
-*resultado.tope=primernumero.tope+segundonumero.tope
+(*resultado).tope=primernumero.tope+segundonumero.tope
 	
-If primernumero.tope>segundonumero.tope 
+If (primernumero.tope)>(segundonumero.tope) 
 	for i, primernumero.tope-1, 0, i-- {
 		for j, segundonumero.tope-1, 0, j-- {
-			resultado.numero[i+j]=primernumero.numero[i]*segundonumero.numero[j];
+			(*resultado).numero[i+j]=primernumero.numero[i]*segundonumero.numero[j];
 		}
 	}
 	for i, (primernumero.tope+segundonumero.tope), 1, i-- {
-		resultado.numero[i-1]+=resultado.numero[i]-resultado.numero[i]%10
-		resultado.numero[i]=resultado.numero[i]%10
+		(*resultado).numero[i-1]+=(*resultado).numero[i]-(*resultado).numero[i]%10
+		(*resultado).numero[i]=(*resultado).numero[i]%10
 	}
 	
 }
-
 
 void printBigNumber (tBigNumber numero) {
 	unsigned i;
